@@ -11,11 +11,13 @@ function convertToObject(sourceString) {
   const keys = {};
 
   for (const item of temp) {
-    const res = item.trim().split();
+    if (item.trim() === '') {
+      continue;
+    }
 
-    const [key, value] = res;
+    const [key, value] = item.split();
 
-    keys[key.trim()] = value;
+    keys[key.trim()] = value.trim();
   }
 
   return keys;
