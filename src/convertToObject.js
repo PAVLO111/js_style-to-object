@@ -8,19 +8,17 @@
 function convertToObject(sourceString) {
   const temp = sourceString.split(';');
 
-  const keys = {};
+  const spaces = temp.filter((line) => line.trim());
 
-  for (const item of temp) {
-    if (item.trim() === '') {
-      continue;
-    }
-
+  const one = spaces.map((item) => {
     const [key, value] = item.split(':');
 
-    keys[key.trim()] = value.trim();
-  }
+    return [key.trim(), value.trim()];
+  });
 
-  return keys;
+  const obj = Object.fromEntries(one);
+
+  return obj;
 }
 
 module.exports = convertToObject;
