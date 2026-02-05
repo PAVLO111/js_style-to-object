@@ -11,13 +11,14 @@ function convertToObject(sourceString) {
   const keys = {};
 
   for (const item of temp) {
-    const [key, value] = item.split(':');
+    const res = item.trim().split();
+
+    const [key, value] = res;
 
     keys[key.trim()] = value;
   }
 
   return keys;
 }
-
 
 module.exports = convertToObject;
