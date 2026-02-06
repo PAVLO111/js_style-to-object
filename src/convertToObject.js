@@ -6,19 +6,19 @@
  * @return {object}
  */
 function convertToObject(sourceString) {
-  const temp = sourceString.split(';');
+  const declarations = sourceString.split(';');
 
-  const spaces = temp.filter((line) => line.trim());
+  const spaces = declarations.filter((line) => line.trim());
 
-  const one = spaces.map((item) => {
+  const validDeclarations = spaces.map((item) => {
     const [key, value] = item.split(':');
 
     return [key.trim(), value.trim()];
   });
 
-  const obj = Object.fromEntries(one);
+  const styleObject = Object.fromEntries(validDeclarations);
 
-  return obj;
+  return styleObject;
 }
 
 module.exports = convertToObject;
